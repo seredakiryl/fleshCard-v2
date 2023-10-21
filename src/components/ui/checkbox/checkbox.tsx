@@ -8,10 +8,11 @@ import { Check } from '../../../assets/icons'
 import { Typography } from '../typography'
 
 import s from './checkbox.module.scss'
+
 export type CheckboxProps = {
   className?: string
   checked?: boolean
-  onChange?: (checked: boolean) => void
+  onValueChange?: (checked: boolean) => void
   disabled?: boolean
   required?: boolean
   label?: string
@@ -21,7 +22,7 @@ export type CheckboxProps = {
 
 export const Checkbox: FC<CheckboxProps> = ({
   checked,
-  onChange,
+  onValueChange,
   position,
   disabled,
   required,
@@ -29,6 +30,7 @@ export const Checkbox: FC<CheckboxProps> = ({
   id,
   className,
 }) => {
+
   const classNames = {
     container: clsx(s.container, className),
     buttonWrapper: clsx(s.buttonWrapper, disabled && s.disabled, position === 'left' && s.left),
@@ -36,6 +38,8 @@ export const Checkbox: FC<CheckboxProps> = ({
     indicator: s.indicator,
     label: clsx(s.label, disabled && s.disabled),
   }
+
+
 
   return (
     <div className={classNames.container}>
@@ -45,7 +49,7 @@ export const Checkbox: FC<CheckboxProps> = ({
             <CheckboxRadix.Root
               className={classNames.root}
               checked={checked}
-              onCheckedChange={onChange}
+              onCheckedChange={onValueChange}
               disabled={disabled}
               required={required}
               id={id}
