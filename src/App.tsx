@@ -1,15 +1,27 @@
-import { Button } from './components/ui'
-import { Card } from './components/ui/card'
-import { Typography } from './components/ui/typography'
+import { Provider } from 'react-redux'
+import { store } from './app/store'
+import { BrowserRouter } from 'react-router-dom'
+import { Table } from './components/ui/table'
+
 
 function App() {
+
+  // let data = {
+  //   email: '',
+  //   password: '',
+  //   rememberMe: '',
+  // }
+
+  // const onSubmit = (data: any) => {
+  //   console.log(data)
+  // }
   return (
-    <div>
-      <Button>Кнопка</Button>
-      <Button variant="tertiary">Кнопка 2</Button>
-      <Typography> Текст</Typography>
-      <Card></Card>
-    </div>
+    <BrowserRouter>
+      <Provider store={store}>
+        {/* <SignIn onSubmit={onSubmit} /> */}
+        <Table />
+      </Provider >
+    </BrowserRouter>
   )
 }
 
